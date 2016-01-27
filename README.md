@@ -26,7 +26,13 @@ Node v5.0.0 or later with `--es-staging` flag
 ## Examples
 
 ```javascript
-var CloneObject = require('x-clone-object');
+
+// require modules
+
+var CloneObject = require('x-clone-object').OASM;
+
+// prepare resources
+
 var duplicated = [
 	{type: '{Object}'},
 	{type: '{null}', __proto__: null},
@@ -39,22 +45,30 @@ var duplicated = [
 		[{key: 'b'}, {value: 'b'}]
 	])
 ];
+
 var circular = {
 	array: ['array'],
 	object: {type: 'child-of-circular'},
 	set: new Set(['circular']),
 	map: new Map([['type', 'child-of-circular']])
 };
+
 var circular_left_array_element = ['left-element'];
 var circular_right_array_element = ['right-element'];
 circular.array.push(circular_left_array_element, circular_right_array_element);
 circular_left_array_element.push(circular_right_array_element);
 circular_right_array_element.push(circular_left_array_element);
+
 circular.object.parent = circular;
+
 var cset = new Set([circular]);
 circular.set.add(cset);
+
 var cmap = new Map([['parent', circular], [circular, 'is parent']]);
 circular.map.set('child', cmap);
+
+// create clone source
+
 var clonable = {
 	'Object.prototype': {
 		'subobject': {a: 123},
@@ -67,7 +81,11 @@ var clonable = {
 	},
 	'circular': circular
 };
+
+// create clone
+
 var cloner = new CloneObject();
 var clone = cloner.create(clonable);
+
 console.log(clone);
 ```
