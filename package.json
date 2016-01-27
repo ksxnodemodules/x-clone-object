@@ -1,0 +1,38 @@
+{
+	"name": "x-clone-object",
+	"description": "Deeply clone kinds of ECMAScript objects",
+	"version": "0.0.0",
+	"author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
+	"contributors": [
+		"Hoàng Văn Khải <hvksmr1996@gmail.com>"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ksxnodemodules/x-clone-object.git"
+	},
+	"engines": {
+		"node": ">=5.0.0"
+	},
+	"dependencies": {
+		"x-iterable": ">= 2.4.2",
+		"x-object-iterable": ">=0.0.2 <2.0.0"
+	},
+	"main": "index.js",
+	"keywords": [
+		"object",
+		"clone",
+		"deep-clone",
+		"clone-object",
+		"clone-array",
+		"clone-map",
+		"clone-set"
+	],
+	"bugs": {
+		"url": "https://github.com/ksxnodemodules/x-clone-object/issues"
+	},
+	"homepage": "https://github.com/ksxnodemodules/x-clone-object#readme",
+	"scripts": {
+		"test": "node --es-staging ./test/main.js"
+	}
+}
