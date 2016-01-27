@@ -28,7 +28,8 @@
 		"clone-object",
 		"clone-array",
 		"clone-map",
-		"clone-set"
+		"clone-set",
+		"circular"
 	],
 	"bugs": {
 		"url": "https://github.com/ksxnodemodules/x-clone-object/issues"
