@@ -26,7 +26,7 @@ Node v5.0.0 or later with `--es-staging` flag
 ## Examples
 
 ```javascript
-var CloneObject = require('x-clone-object');
+var CloneObject = require('x-clone-object').OASM;
 var duplicated = [
 	{type: '{Object}'},
 	{type: '{null}', __proto__: null},
