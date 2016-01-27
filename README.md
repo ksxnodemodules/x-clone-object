@@ -67,7 +67,7 @@ var clonable = {
 	},
 	'circular': circular
 };
-var cloner = new CloneObject(clonable);
-var clone = cloner.create();
+var cloner = new CloneObject();
+var clone = cloner.create(clonable);
 console.log(clone);
 ```
