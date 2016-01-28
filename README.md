@@ -23,6 +23,10 @@ Node v5.0.0 or later with `--es-staging` flag
   - The cloner create a clone for a clonable object only once and reused the clone if encounter another reference to the clonable object
   - You can clone **circular objects**
 
+ * Extensible
+  - Implement features above to other kinds of JavaScript objects
+  - Implement other methods to other kinds of JavaScript objects
+
 ## Examples
 
 ```javascript
