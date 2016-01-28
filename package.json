@@ -1,6 +1,6 @@
 {
 	"name": "x-clone-object",
-	"description": "Deeply clone kinds of ECMAScript objects",
+	"description": "Deeply clone JavaScript objects",
 	"version": "0.0.0",
 	"author": "Hoàng Văn Khải <hvksmr1996@gmail.com>",
 	"contributors": [
