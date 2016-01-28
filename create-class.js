@@ -6,13 +6,25 @@
 
 	module.exports = createClass;
 
-	function createClass(map) {
+	const TRANSFORM_METHODS = (desc) => {
+
+		return {
+			initialize: desc.initialize,
+			finalize: desc.finalize,
+			process() {}
+		}
+
+	};
+
+	function createClass(map, ...methods) {
 
 		if (typeof map !== 'object' || !map) {
 			map = new WeakMap();
 		}
 
 		class ObjectCloner extends TreeCopier {
+
+			super(...methods.map(TRANSFORM_METHODS));
 
 		}
 
