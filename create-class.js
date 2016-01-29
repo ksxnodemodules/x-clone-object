@@ -46,7 +46,8 @@
 			}
 
 			create(source) {
-
+				this.map = new Map();
+				return super.create(source);
 			}
 
 		}
