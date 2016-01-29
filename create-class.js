@@ -6,15 +6,15 @@
 
 	module.exports = createClass;
 
-	const TRANSFORM_METHODS = (map) => (desc) => {
+	const TRANSFORM_METHODS = (desc) => {
 
 		var _process = desc.process;
 
 		return {
 			initialize: desc.initialize,
 			finalize: desc.finalize,
-			process(...args) {
-				var base = _process(...args);
+			process(value, self) {
+				var base = _process(value, self);
 				if (base) {
 					let deeper = base.deeper;
 					var _get = base.get;
@@ -23,6 +23,7 @@
 						deeper: deeper,
 						set: desc.set
 					};
+					let map = self.map;
 					result.get = (key) =>
 						map.get(key) || _get(value);
 					return result;
@@ -41,7 +42,11 @@
 		class ObjectCloner extends TreeCopier {
 
 			constructor() {
-				super(...methods.map(TRANSFORM_METHODS(map)));
+				super(...methods.map(TRANSFORM_METHODS));
+			}
+
+			create(source) {
+
 			}
 
 		}
