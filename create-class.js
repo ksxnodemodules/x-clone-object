@@ -40,7 +40,9 @@
 
 		class ObjectCloner extends TreeCopier {
 
-			super(...methods.map(TRANSFORM_METHODS(map)));
+			constructor() {
+				super(...methods.map(TRANSFORM_METHODS(map)));
+			}
 
 		}
 
