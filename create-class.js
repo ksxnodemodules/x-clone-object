@@ -32,10 +32,10 @@
 
 	};
 
-	function createClass(map, ...methods) {
+	function createClass(Map, ...methods) {
 
-		if (typeof map !== 'object' || !map) {
-			map = new WeakMap();
+		if (typeof Map !== 'function') {
+			Map = WeakMap;
 		}
 
 		class ObjectCloner extends TreeCopier {
