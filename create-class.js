@@ -50,6 +50,10 @@
 				return super.create(source);
 			}
 
+			static addMethod(...args) {
+				methods.push(...args);
+			}
+
 		}
 
 		return class extends ObjectCloner {};
