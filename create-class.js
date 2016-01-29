@@ -6,33 +6,6 @@
 
 	module.exports = createClass;
 
-	// const TRANSFORM_METHODS = (desc) => {
-
-	// 	var _process = desc.process;
-
-	// 	return {
-	// 		initialize: desc.initialize,
-	// 		finalize: desc.finalize,
-	// 		process(value, self) {
-	// 			var base = _process(value, self);
-	// 			if (base) {
-	// 				let deeper = base.deeper;
-	// 				var _get = base.get;
-	// 				let result = {
-	// 					value: base.value,
-	// 					deeper: deeper,
-	// 					set: desc.set
-	// 				};
-	// 				let map = self.map;
-	// 				result.get = (key) =>
-	// 					map.get(key) || _get(value);
-	// 				return result;
-	// 			}
-	// 		}
-	// 	};
-
-	// };
-
 	const TRANSFORM_METHODS = (desc) => new Method(desc);
 
 	function createClass(Map, ...methods) {
