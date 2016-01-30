@@ -8,10 +8,10 @@
 
 	const TRANSFORM_METHODS = (desc) => new Method(desc);
 
-	function createClass(Map, ...methods) {
+	function createClass(mkmap, ...methods) {
 
 		if (typeof Map !== 'function') {
-			Map = WeakMap;
+			mkmap = createClass.DEFAULT_MKMAP;
 		}
 
 		class ObjectCloner extends TreeCopier {
@@ -21,7 +21,7 @@
 			}
 
 			create(source) {
-				this.map = new Map();
+				this.map = mkmap();
 				return super.create(source);
 			}
 
@@ -34,6 +34,8 @@
 		return class extends ObjectCloner {};
 
 	}
+
+	createClass.DEFAULT_MKMAP = () => new WeakMap();
 
 	class Method {
 
