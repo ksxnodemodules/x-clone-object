@@ -32,7 +32,7 @@
 				methods.push(...args);
 			}
 
-			static removeMethods(..args) {
+			static removeMethods(...args) {
 				methods.remove(...args);
 			}
 
