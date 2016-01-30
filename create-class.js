@@ -15,6 +15,8 @@
 			mkmap = createClass.DEFAULT_MKMAP;
 		}
 
+		methods = new SetOfMethods(methods);
+
 		class ObjectCloner extends TreeCopier {
 
 			constructor() {
@@ -26,8 +28,16 @@
 				return super.create(source);
 			}
 
-			static addMethod(...args) {
+			static addMethods(...args) {
 				methods.push(...args);
+			}
+
+			static removeMethods(..args) {
+				methods.remove(...args);
+			}
+
+			static get numberOfMethods() {
+				return methods.size;
 			}
 
 		}
@@ -39,10 +49,17 @@
 	createClass.DEFAULT_MKMAP = () => new WeakMap();
 
 	class SetOfMethods extends XIterable(Set) {
+
 		push(...elements) {
 			elements.forEach((element) => this.add(element));
 			return this.size;
 		}
+
+		remove(...elements) {
+			elements.forEach((element) => this.delete(element));
+			return this.size;
+		}
+
 	}
 
 	class Method {
