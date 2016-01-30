@@ -2,6 +2,7 @@
 ((module) => {
 	'use strict';
 
+	var XIterable = require('x-iterable/create-class');
 	var TreeCopier = require('x-iterable-tree/tree-copier');
 
 	module.exports = createClass;
@@ -36,6 +37,13 @@
 	}
 
 	createClass.DEFAULT_MKMAP = () => new WeakMap();
+
+	class SetOfMethods extends XIterable(Set) {
+		push(...elements) {
+			elements.forEach((element) => this.add(element));
+			return this.size;
+		}
+	}
 
 	class Method {
 
