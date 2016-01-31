@@ -2,6 +2,8 @@
 ((module) => {
 	'use strict';
 
+	var ObjectIterable = require('x-object-iterable');
+
 	var getproto = Object.getPrototypeOf;
 	var objproto = Object.prototype;
 
@@ -9,7 +11,7 @@
 		process(object) {
 			var proto = getproto(object);
 			if (proto === objproto || proto === null) {
-
+				
 			}
 		}
 	});
