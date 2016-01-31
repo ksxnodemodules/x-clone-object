@@ -3,7 +3,10 @@
 	'use strict';
 
 	var XIterable = require('x-iterable/create-class');
-	var TreeCopier = require('x-iterable-tree/tree-copier');
+	class TreeCopier extends require('x-iterable-tree/tree-copier') {}
+
+	createClass.prototype = TreeCopier.prototype;
+	createClass.Super = createClass.Base = createClass.TreeCopier = TreeCopier;
 
 	module.exports = createClass;
 
