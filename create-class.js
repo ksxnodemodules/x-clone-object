@@ -84,12 +84,17 @@
 
 	Method.Process = class {
 		constructor(base, map) {
-			var deeper = base.deeper;
-			var _get = base.get;
-			this.value = base.value;
-			this.deeper = deeper;
-			this.get = (key) =>
-				map.get(key) || _get(value);
+			var lval = this.value = base.value;
+			if (map.has(lval)) {
+				this.deeper = false;
+			} else {
+				var rval = base.get(lval);
+				map.set(lval, rval);
+				this.deeper = base.deeper;
+				this.get = () => rval;
+				this.set = base.set;
+			}
+
 		}
 	};
 
