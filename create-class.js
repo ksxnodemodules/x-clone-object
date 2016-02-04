@@ -93,10 +93,12 @@
 			this.get = () => lval;
 			this.set = base.set;
 			return {
-				deeper: false,
+				deeper: base.deeper,
 				__proto__: this
 			};
 		}
 	};
+
+	Method.Process.prototype.deeper = false;
 
 })(module);
