@@ -85,16 +85,17 @@
 	Method.Process = class {
 		constructor(base, map) {
 			var lval = this.value = base.value;
-			if (map.has(lval)) {
-				this.deeper = false;
-			} else {
-				var rval = base.get(lval);
-				map.set(lval, rval);
-				this.deeper = base.deeper;
-				this.get = () => rval;
-				this.set = base.set;
+			var result = map.get(lval);
+			if (result) {
+				return result;
 			}
-
+			map.set(lval, this);
+			this.get = () => lval;
+			this.set = base.set;
+			return {
+				deeper: false,
+				__proto__: this
+			};
 		}
 	};
 
