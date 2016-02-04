@@ -74,9 +74,14 @@
 		}
 
 		process(value, self) {
-			var base = this._process(value, self);
-			if (base) {
-				return new Method.Process(base, self.map);
+			var map = self.map;
+			var result = map.get(value);
+			if (result) {
+				return result;
+			}
+			result = this._process(value, self);
+			if (result) {
+				return new Method.Process(result, map);
 			}
 		}
 
@@ -85,10 +90,6 @@
 	Method.Process = class {
 		constructor(base, map) {
 			var lval = this.value = base.value;
-			var result = map.get(lval);
-			if (result) {
-				return result;
-			}
 			map.set(lval, this);
 			this.get = () => lval;
 			this.set = base.set;
