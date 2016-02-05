@@ -13,6 +13,7 @@
 	var _return = (value) => () => value;
 
 	const RETURN = freezeobj({
+		deeper: true,
 		set(container, element) {
 			defpro(container, element.descriptor);
 		}
