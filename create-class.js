@@ -65,7 +65,7 @@
 
 	}
 
-	createMethod = (desc) => ({
+	var createMethod = (desc) => ({
 		process(value, self) {
 			var map = self.map;
 			var result = map.get(value);
