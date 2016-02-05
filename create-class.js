@@ -10,7 +10,7 @@
 
 	module.exports = createClass;
 
-	const TRANSFORM_METHODS = (desc) => new Method(desc);
+	const TRANSFORM_METHODS = (desc) => createMethod(desc);
 
 	function createClass(mkmap, ...methods) {
 
@@ -65,29 +65,22 @@
 
 	}
 
-	class Method {
-
-		constructor(desc) {
-			this.initialize = desc.initialize;
-			this.finalize = desc.finalize;
-			this._process = desc.process;
-		}
-
+	createMethod = (desc) => ({
 		process(value, self) {
 			var map = self.map;
 			var result = map.get(value);
 			if (result) {
 				return result;
 			}
-			result = this._process(value, self);
+			result = desc.process(value, self);
 			if (result) {
-				return new Method.Process(result, map);
+				return new createMethod.Process(result, map);
 			}
-		}
+		},
+		__proto__: desc
+	});
 
-	}
-
-	Method.Process = class {
+	createMethod.Process = class {
 		constructor(base, map) {
 			var lval = this.value = base.value;
 			map.set(lval, this);
@@ -100,6 +93,6 @@
 		}
 	};
 
-	Method.Process.prototype.deeper = false;
+	createMethod.Process.prototype.deeper = false;
 
 })(module);
