@@ -20,6 +20,31 @@
 
 		methods = new SetOfMethods(methods);
 
+		//	methods: array:
+		//		struct:
+		//			optional function initialize:
+		//				returns: void;
+		//				takes:
+		//					void this;
+		//					TreeCopier self;
+		//			optional function finalize:
+		//				returns: void;
+		//				takes:
+		//					void this;
+		//					Container container;
+		//					TreeCopier self;
+		//			function process:
+		//				returns: either:
+		//					struct:
+		//						Value value;
+		//						Iterable getIterable(Value value);
+		//						void set(Container container, Value value);
+		//					void;
+		//				takes:
+		//					void this;
+		//					Value object;
+		//					ObjectCloner self;
+
 		class ObjectCloner extends TreeCopier {
 
 			constructor() {
