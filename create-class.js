@@ -37,7 +37,7 @@
 		//				returns: either:
 		//					struct:
 		//						Value value;
-		//						Iterable getIterable(Value value);
+		//						optional Iterable getIterable(Value value);
 		//						void set(Container container, Value value);
 		//					void;
 		//				takes:
@@ -109,8 +109,9 @@
 		var lval = this.value = base.value;
 		map.set(lval, this);
 		this.set = base.set;
+		var getIterable = base.getIterable;
 		return {
-			iterable: base.getIterable(lval),
+			iterable: typeof getIterable === 'function' && getIterable(lval),
 			__proto__: this
 		};
 	};
