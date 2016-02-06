@@ -1,5 +1,5 @@
 
-((module) => {
+((module, undefined) => {
 	'use strict';
 
 	var XIterable = require('x-iterable/create-class');
@@ -84,15 +84,14 @@
 		constructor(base, map) {
 			var lval = this.value = base.value;
 			map.set(lval, this);
-			this.get = () => lval;
 			this.set = base.set;
 			return {
-				deeper: base.deeper,
+				iterable: base.getIterable(lval),
 				__proto__: this
 			};
 		}
 	};
 
-	createMethod.Process.prototype.deeper = false;
+	createMethod.Process.prototype.iterable = undefined;
 
 })(module);
