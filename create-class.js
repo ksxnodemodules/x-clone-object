@@ -37,7 +37,7 @@
 		//				returns: either:
 		//					struct:
 		//						Value value;
-		//						optional Iterable getIterable(Value value);
+		//						optional Iterable? getIterable(Value value);
 		//						void set(Container container, Value value);
 		//					void;
 		//				takes:
