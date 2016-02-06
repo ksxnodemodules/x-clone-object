@@ -80,16 +80,14 @@
 		__proto__: desc
 	});
 
-	createMethod.Process = class {
-		constructor(base, map) {
-			var lval = this.value = base.value;
-			map.set(lval, this);
-			this.set = base.set;
-			return {
-				iterable: base.getIterable(lval),
-				__proto__: this
-			};
-		}
+	createMethod.Process = function (base, map) {
+		var lval = this.value = base.value;
+		map.set(lval, this);
+		this.set = base.set;
+		return {
+			iterable: base.getIterable(lval),
+			__proto__: this
+		};
 	};
 
 	createMethod.Process.prototype.iterable = undefined;
